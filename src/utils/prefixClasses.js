@@ -6,8 +6,11 @@ const prefixClasses = (prefix, classes, passThrough) => {
   const applyPrefix = (className) => {
     if (className) {
       const classString = classNames(className);
-      if (classString !== '') {
-        return `${prefix}${classString}`;
+      if (classString) {
+        return classString
+          .split(' ')
+          .map(cs => `${prefix}${cs}`)
+          .join(' ');
       }
     }
 
