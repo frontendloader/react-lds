@@ -29,8 +29,10 @@ const ExampleAdvanced = () => (
     data={data}
     fixed-layout
     hasSelectableRows
-    onSelection={(...rest) => console.log(rest)}
-    onSorting={(...rest) => console.log(rest)}
+    isActionable
+    onAction={rowId => console.log('Action!', rowId)}
+    onSelection={(...rest) => console.log('Selection!', rest)}
+    onSorting={(...rest) => console.log('Sorting!', rest)}
   >
     <DataTableColumn
       dataKey="col1"
