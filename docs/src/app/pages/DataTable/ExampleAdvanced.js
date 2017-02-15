@@ -22,12 +22,14 @@ const data = [
   },
 ];
 
+
 const ExampleAdvanced = () => (
   <DataTableAdvanced
     bordered
-    fixed-layout
     data={data}
+    fixed-layout
     hasSelectableRows
+    onSelection={(...rest) => console.log(rest)}
     onSorting={(...rest) => console.log(rest)}
   >
     <DataTableColumn
@@ -39,12 +41,17 @@ const ExampleAdvanced = () => (
     <DataTableColumn
       dataKey="col2"
       isResizable
-      isSortable={false}
       title="Column 2"
     />
     <DataTableColumn
       dataKey="col4"
-      title="Column 4"
+      title="Column w/ custom renderer"
+      isSortable
+      renderer={(key, val) => (
+        <span>
+          <strong>{key}:</strong> {val}
+        </span>
+      )}
     />
   </DataTableAdvanced>
 );
